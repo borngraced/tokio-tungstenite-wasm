@@ -257,22 +257,6 @@ pub enum UrlError {
 #[derive(Error, Debug)]
 #[non_exhaustive]
 pub enum TlsError {
-    /// Native TLS error.
-    #[cfg(feature = "native-tls")]
-    #[error("native-tls error: {0}")]
-    Native(#[from] native_tls::Error),
-    /// Rustls error.
-    #[cfg(feature = "__rustls-tls")]
-    #[error("rustls error: {0}")]
-    Rustls(#[from] rustls::Error),
-    /// Webpki error.
-    #[cfg(feature = "__rustls-tls")]
-    #[error("webpki error: {0}")]
-    Webpki(#[from] webpki::Error),
-    /// DNS name resolution error.
-    #[cfg(feature = "__rustls-tls")]
-    #[error("Invalid DNS name")]
-    InvalidDnsName,
     /// Unknown
     #[error("An unknown error from the underlying interface")]
     Unknown,

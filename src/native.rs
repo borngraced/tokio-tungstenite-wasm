@@ -241,14 +241,6 @@ impl From<ProtocolError> for crate::error::ProtocolError {
 impl From<TlsError> for crate::error::TlsError {
     fn from(err: TlsError) -> Self {
         match err {
-            #[cfg(feature = "native-tls")]
-            TlsError::Native(inner) => crate::error::TlsError::Native(inner),
-            #[cfg(feature = "__rustls-tls")]
-            TlsError::Rustls(inner) => crate::error::TlsError::Rustls(inner),
-            #[cfg(feature = "__rustls-tls")]
-            TlsError::Webpki(inner) => crate::error::TlsError::Webpki(inner),
-            #[cfg(feature = "__rustls-tls")]
-            TlsError::InvalidDnsName => crate::error::TlsError::InvalidDnsName,
             _ => crate::error::TlsError::Unknown,
         }
     }
