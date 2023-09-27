@@ -260,7 +260,7 @@ pub enum TlsError {
     /// Native TLS error.
     #[cfg(feature = "native-tls")]
     #[error("native-tls error: {0}")]
-    Native(#[from] native_tls_crate::Error),
+    Native(#[from] native_tls::Error),
     /// Rustls error.
     #[cfg(feature = "__rustls-tls")]
     #[error("rustls error: {0}")]
